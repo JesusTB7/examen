@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 export const UsersList = ({ users = [] }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredUsers = users.filter((usuario) =>
+    usuario.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    usuario.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
+      <input
+        type="text"
+        placeholder="Buscar por nombre o correo"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <table>
         <thead>
           <tr>
@@ -14,7 +27,7 @@ export const UsersList = ({ users = [] }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((usuario) => (
+          {filteredUsers.map((usuario) => (
             <tr key={usuario.id}>
               <td>{usuario.id}</td>
               <td>{usuario.name}</td>
@@ -27,6 +40,5 @@ export const UsersList = ({ users = [] }) => {
     </div>
   );
 };
-
 
 export default UsersList;
