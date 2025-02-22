@@ -10,20 +10,21 @@ export const UsersList = ({ users = [] }) => {
   );
 
   return (
-    <div>
+    <div className="container">
       <input
         type="text"
-        placeholder="Buscar por nombre o correo"
+        className="search-input"
+        placeholder="🔍 Buscar por nombre o correo..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <table>
+      <table className="user-table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Last_Name</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Apellido</th>
           </tr>
         </thead>
         <tbody>
