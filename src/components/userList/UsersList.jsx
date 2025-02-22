@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './style.css';
 
 export const UsersList = ({ users = [] }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,21 +9,28 @@ export const UsersList = ({ users = [] }) => {
   );
 
   return (
-    <div className="container">
+    <div>
       <input
         type="text"
-        className="search-input"
-        placeholder="🔍 Buscar por nombre o correo..."
+        placeholder="Buscar por nombre o correo"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          width: '100%',
+          padding: '12px',
+          fontSize: '18px',
+          border: '1px solid #ccc',
+          borderRadius: '5px',
+          marginBottom: '10px'
+        }}
       />
-      <table className="user-table">
+      <table>
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Apellido</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Last_Name</th>
           </tr>
         </thead>
         <tbody>
